@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: be-todo
+    env: docker
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://todo_db_nyef_user:OxU3yjEHvfVlIstSth0483LotlMvx0Yl@dpg-d82bucm7r5hc73echkpg-a/todo_db_nyef
+      - key: PORT
+        value: 5001
+  
+  - type: web
+    name: fe-todo
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://be-todo.onrender.com
